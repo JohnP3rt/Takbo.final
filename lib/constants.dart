@@ -1,0 +1,14 @@
+const double playerStartX = 100;
+const double playerStartY = 100;
+const double playerWidth = 150;
+const double playerHeight = 65;
+const double gravity = 500;
+const double jumpStrength = -200;
+const double groundHeight = 20;
+double groundScrollingSpeed = 150;
+double obstacleInterval = 4;
+const double obstacleGap = 165;
+const double minPipeHeight = 50;
+const double obstacleWidth = 50;
+const double glideUpwardVelocity = -150;
+const double maxSpeed = 150;

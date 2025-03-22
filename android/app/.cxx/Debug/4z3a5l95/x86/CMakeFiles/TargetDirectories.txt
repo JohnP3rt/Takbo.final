@@ -1,0 +1,2 @@
+C:/Users/Jeff Danglapen/Documents/GitHub/Midterm_Project_Takbo/takbo/android/app/.cxx/Debug/4z3a5l95/x86/CMakeFiles/edit_cache.dir
+C:/Users/Jeff Danglapen/Documents/GitHub/Midterm_Project_Takbo/takbo/android/app/.cxx/Debug/4z3a5l95/x86/CMakeFiles/rebuild_cache.dir
