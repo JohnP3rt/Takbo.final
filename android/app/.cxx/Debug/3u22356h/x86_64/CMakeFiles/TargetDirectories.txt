@@ -1,0 +1,2 @@
+C:/Users/Gabrielle/Downloads/Takbo.final/android/app/.cxx/Debug/3u22356h/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/Gabrielle/Downloads/Takbo.final/android/app/.cxx/Debug/3u22356h/x86_64/CMakeFiles/rebuild_cache.dir

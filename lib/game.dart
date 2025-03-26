@@ -26,6 +26,7 @@ class ManananggalGame extends FlameGame
   late ParallaxBackground parallax;
   ValueNotifier<int> score = ValueNotifier<int>(0);
   late SharedPreferences sharedPrefs;
+  late SharedPreferences scorePrefs;
   bool gameStart = false;
   bool gameComplete = false;
   bool isGameOver = false;
@@ -117,7 +118,6 @@ class ManananggalGame extends FlameGame
       await _audioPlayer.stop();
       return;
     }
-
     if (_audioPlayer.processingState == ProcessingState.ready &&
         _audioPlayer.playing) {
       await _audioPlayer.stop();
@@ -130,16 +130,58 @@ class ManananggalGame extends FlameGame
   void gameDone() {
     if (!gameComplete) {
       gameComplete = true;
-      togglePause();
+      pauseEngine();
+      //score.value += 10;
       togglePlayer(forceStop: true);
       overlays.add('Intermission');
       overlays.remove('PauseButton');
+      overlays.remove('PauseMenu');
     }
   }
 
   void resumeAfterIntermission() {
     overlays.remove('Intermission');
-    togglePlayer();
+    resetAfterWin();
+    resumeEngine();
+  }
+
+  void returnToMainMenu() {
+    // Reset game state
+    gameStart = false;
+    isGameOver = false;
+    gameComplete = false;
+    isPaused = false;
+    score.value = 0;
+
+    // Hide Manananggal character
+    player.position = player.hiddenPosition;
+    player.velocity = 0;
+    // player.removeFromParent();
+    obstacleManager.removeFromParent();
+    if (!children.contains(player)) {
+      add(player);
+    }
+    children.whereType<Obstacle>().forEach((pipe) => pipe.removeFromParent());
+    children
+        .whereType<BuntisPowerUp>()
+        .forEach((buntis) => buntis.removeFromParent());
+    resumeEngine();
+    children
+        .whereType<FloatingPowerUp>()
+        .forEach((power) => power.removeFromParent());
+    resumeEngine();
+    // Remove game overlays and show Main Menu
+    overlays.remove('GameOverHUD');
+    overlays.remove('PauseButton');
+    overlays.remove('MainMenu');
+    overlays.remove('ScoreHUD');
+    overlays.remove('PauseMenu');
+
+    overlays.add('MainMenu');
+
+    // Stop all game logic
+    resumeEngine();
+    togglePlayer(forceStop: true);
   }
 
   void gameOver() {
@@ -151,6 +193,25 @@ class ManananggalGame extends FlameGame
     overlays.remove('PauseButton');
     overlays.remove('ScoreHUD');
     overlays.add('GameOverHUD');
+    print('GAmeOver');
+  }
+
+  void resetAfterWin() {
+    player.position = player.hiddenPosition;
+    player.velocity = 0;
+    isGameOver = false;
+
+    gameComplete = true;
+    children.whereType<Obstacle>().forEach((pipe) => pipe.removeFromParent());
+    children
+        .whereType<BuntisPowerUp>()
+        .forEach((buntis) => buntis.removeFromParent());
+    resumeEngine();
+    children
+        .whereType<FloatingPowerUp>()
+        .forEach((power) => power.removeFromParent());
+    resumeEngine();
+    overlays.add('PauseButton');
   }
 
   void resetGame() {
@@ -159,6 +220,7 @@ class ManananggalGame extends FlameGame
     score.value = 0;
     isGameOver = false;
     gameComplete = false;
+    isPaused = false;
     children.whereType<Obstacle>().forEach((pipe) => pipe.removeFromParent());
     children
         .whereType<BuntisPowerUp>()
@@ -177,9 +239,11 @@ class ManananggalGame extends FlameGame
     isPaused = !isPaused;
     if (isPaused == true) {
       pauseEngine();
+      togglePlayer(forceStop: true);
       overlays.add('PauseMenu');
       overlays.remove('PauseButton');
     } else {
+      togglePlayer();
       overlays.remove('PauseMenu');
       overlays.add('PauseButton');
       resumeEngine();
@@ -195,14 +259,11 @@ class ManananggalGame extends FlameGame
       if (obstacleInterval >= 1.0) {
         increaseDifficulty();
       }
-
       overlays.remove('MainMenu');
     }
-
-    if (score.value >= 5 && !gameComplete) {
+    if (score.value >= 1 && !gameComplete) {
       gameDone();
     }
-
     super.update(dt);
   }
 }

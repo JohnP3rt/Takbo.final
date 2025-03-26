@@ -80,7 +80,17 @@ class GameOverHud extends StatelessWidget {
               style: TextStyle(fontFamily: "PressStart2P", color: Colors.red),
             ),
           ),
-        )
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 3,
+          child: ElevatedButton(
+            onPressed: game.returnToMainMenu,
+            child: Text(
+              'Return To Menu',
+              style: TextStyle(fontFamily: "PressStart2P", color: Colors.red),
+            ),
+          ),
+        ),
       ],
     ));
   }

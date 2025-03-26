@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
           'GameOverHUD' : (context, game) => GameOverHud(game as ManananggalGame),
           'MainMenu' : (context,game) => MainMenu(game as ManananggalGame),
           'ScoreHUD' : (context, game) => ScoreHUD(game as ManananggalGame),
-          'Intermission' : (context, game) => StoryIntermissionScreen(game as ManananggalGame)
+          'Intermission' : (context, game) => StoryIntermissionScreen(game as ManananggalGame),
         },
-        initialActiveOverlays: const ['MainMenu'],
+        initialActiveOverlays: const ['MainMenu'],  
       ),
     );
   }
