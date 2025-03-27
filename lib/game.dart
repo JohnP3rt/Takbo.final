@@ -113,19 +113,7 @@ class ManananggalGame extends FlameGame
     }
   }
 
-  void togglePlayer({bool forceStop = false}) async {
-    if (forceStop) {
-      await _audioPlayer.stop();
-      return;
-    }
-    if (_audioPlayer.processingState == ProcessingState.ready &&
-        _audioPlayer.playing) {
-      await _audioPlayer.stop();
-    } else {
-      _audioPlayer.seek(Duration.zero);
-      await _audioPlayer.play();
-    }
-  }
+  
 
   void gameDone() {
     if (!gameComplete) {
@@ -233,6 +221,20 @@ class ManananggalGame extends FlameGame
     overlays.remove('GameOverHUD');
     overlays.add('ScoreHUD');
     overlays.add('PauseButton');
+  }
+
+  void togglePlayer({bool forceStop = false}) async {
+    if (forceStop) {
+      await _audioPlayer.stop();
+      return;
+    }
+    if (_audioPlayer.processingState == ProcessingState.ready &&
+        _audioPlayer.playing) {
+      await _audioPlayer.pause();
+    } else {
+      
+      await _audioPlayer.play();
+    }
   }
 
   void togglePause() {
