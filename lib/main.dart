@@ -9,6 +9,7 @@ import 'package:takbo/hud/pause_button_hud.dart';
 import 'package:takbo/hud/pause_hud.dart';
 import 'package:takbo/hud/score_hud.dart';
 import 'package:takbo/intermission/intermission.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Flame.device.fullScreen();
@@ -27,21 +28,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: "PressStart2P"
-      ),
+      theme: ThemeData(fontFamily: "PressStart2P"),
       home: GameWidget(
         game: ManananggalGame(),
         overlayBuilderMap: {
           'PauseButton': (context, game) =>
               PauseButton(game as ManananggalGame),
           'PauseMenu': (context, game) => PauseMenu(game as ManananggalGame),
-          'GameOverHUD' : (context, game) => GameOverHud(game as ManananggalGame),
-          'MainMenu' : (context,game) => MainMenu(game as ManananggalGame),
-          'ScoreHUD' : (context, game) => ScoreHUD(game as ManananggalGame),
-          'Intermission' : (context, game) => StoryIntermissionScreen(game as ManananggalGame),
+          'GameOverHUD': (context, game) =>
+              GameOverHud(game as ManananggalGame),
+          'MainMenu': (context, game) => MainMenu(game as ManananggalGame),
+          'ScoreHUD': (context, game) => ScoreHUD(game as ManananggalGame),
+          'Intermission': (context, game) =>
+              StoryIntermissionScreen(game as ManananggalGame),
         },
-        initialActiveOverlays: const ['MainMenu'],  
+        initialActiveOverlays: const ['MainMenu'],
       ),
     );
   }

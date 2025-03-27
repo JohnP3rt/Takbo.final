@@ -261,7 +261,7 @@ class ManananggalGame extends FlameGame
       }
       overlays.remove('MainMenu');
     }
-    if (score.value >= 1 && !gameComplete) {
+    if (score.value >= 30 && !gameComplete) {
       gameDone();
     }
     super.update(dt);

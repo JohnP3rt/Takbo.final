@@ -7,7 +7,6 @@ class PauseMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -21,15 +20,12 @@ class PauseMenu extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Resume",
-                  style: TextStyle(
-                  fontSize: 24,
-                  decoration: TextDecoration.none,
-                  color: Colors.white,
-                  fontFamily: "PressStart2P"
-                )
-                ),
+                Text("Resume",
+                    style: TextStyle(
+                        fontSize: 24,
+                        decoration: TextDecoration.none,
+                        color: Colors.white,
+                        fontFamily: "PressStart2P")),
                 IconButton(
                     onPressed: game.togglePause,
                     icon: Icon(
@@ -40,10 +36,6 @@ class PauseMenu extends StatelessWidget {
               ],
             ),
           ),
-          ElevatedButton(
-            onPressed: game.returnToMainMenu, 
-            child: Text('Main Screen')
-          )
         ],
       ),
     );
