@@ -85,6 +85,7 @@ class _StoryIntermissionScreenState extends State<StoryIntermissionScreen> {
                   ),
                   onPressed: () {
                     widget.game.resumeAfterIntermission();
+                   
                     audioPlayer.pause();
                   },
                   child: Text(

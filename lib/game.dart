@@ -200,7 +200,7 @@ class ManananggalGame extends FlameGame
     player.position = player.hiddenPosition;
     player.velocity = 0;
     isGameOver = false;
-
+    togglePlayer();
     gameComplete = true;
     children.whereType<Obstacle>().forEach((pipe) => pipe.removeFromParent());
     children
