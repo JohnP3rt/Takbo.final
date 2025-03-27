@@ -76,17 +76,17 @@ class GameOverHud extends StatelessWidget {
               game.resetGame();
             },
             child: Text(
-              'Magsimula Muli',
+              'Ulitin',
               style: TextStyle(fontFamily: "PressStart2P", color: Colors.red),
             ),
           ),
         ),
         SizedBox(
-          width: MediaQuery.of(context).size.width / 3,
+          width: MediaQuery.of(context).size.width / 2.2,
           child: ElevatedButton(
             onPressed: game.returnToMainMenu,
             child: Text(
-              'Return To Menu',
+              'Bumalik sa Talaan',
               style: TextStyle(fontFamily: "PressStart2P", color: Colors.red),
             ),
           ),

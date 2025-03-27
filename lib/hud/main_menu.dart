@@ -38,7 +38,7 @@ class _MainMenuState extends State<MainMenu> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Sa Kanto',
+          Text('Wak-Wak',
               style: TextStyle(
                 decoration: TextDecoration.none,
                 color: Colors.white,

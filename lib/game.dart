@@ -113,8 +113,6 @@ class ManananggalGame extends FlameGame
     }
   }
 
-  
-
   void gameDone() {
     if (!gameComplete) {
       gameComplete = true;
@@ -232,7 +230,6 @@ class ManananggalGame extends FlameGame
         _audioPlayer.playing) {
       await _audioPlayer.pause();
     } else {
-      
       await _audioPlayer.play();
     }
   }
